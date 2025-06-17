@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
+  // output   = "../app/generated/prisma"
 }
 
 datasource db {
@@ -25,9 +25,11 @@ model Manager {
 }
 
 model Player {
-  id        Int            @id @default(autoincrement())
+  id        String         @id @default(uuid())
   name      String
   position  String
+  Country   String
+  Age       Int
   rating    Int
   basePrice Int
   createdAt DateTime       @default(now())
@@ -35,9 +37,9 @@ model Player {
 }
 
 model PlayerOnTeam {
-  id       Int    @id @default(autoincrement())
+  id       String @id @default(uuid())
   player   Player @relation(fields: [playerId], references: [id])
-  playerId Int
+  playerId String
   team     Team   @relation(fields: [teamId], references: [id])
   teamId   String
   position String
