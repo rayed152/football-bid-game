@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-// import { AddPlayerSchema } from "@/lib/validators/addPlayer";
 import { AddPlayerResult } from "@/types/players";
 
 export default function AddPlayerForm() {
@@ -45,6 +44,30 @@ export default function AddPlayerForm() {
               {result && "error" in result && result.error?.playerName && (
                 <p className="text-sm text-red-500">
                   {result.error.playerName._errors[0]}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">Country</label>
+              <Input
+                name="country"
+                type="text"
+                placeholder="Enter player name"
+              />
+              {result && "error" in result && result.error?.country && (
+                <p className="text-sm text-red-500">
+                  {result.error.country._errors[0]}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">Age</label>
+              <Input name="age" type="number" placeholder="Player Age" />
+              {result && "error" in result && result.error?.age && (
+                <p className="text-sm text-red-500">
+                  {result.error.age._errors[0]}
                 </p>
               )}
             </div>

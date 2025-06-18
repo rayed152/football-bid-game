@@ -28,8 +28,8 @@ model Player {
   id        String         @id @default(uuid())
   name      String
   position  String
-  Country   String
-  Age       Int
+  country   String
+  age       Int
   rating    Int
   basePrice Int
   createdAt DateTime       @default(now())

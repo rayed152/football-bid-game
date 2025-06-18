@@ -10,13 +10,16 @@ export async function addPlayerAction(formData: FormData) {
     position: formData.get("position"),
     rating: formData.get("rating"),
     basePrice: formData.get("basePrice"),
+    age: formData.get("age"),
+    country: formData.get("country"),
   });
 
   if (!validated.success) {
     return { error: validated.error.format() };
   }
 
-  const { playerName, position, rating, basePrice } = validated.data;
+  const { playerName, position, rating, basePrice, age, country } =
+    validated.data;
 
   await db.player.create({
     data: {
@@ -24,6 +27,8 @@ export async function addPlayerAction(formData: FormData) {
       position,
       rating,
       basePrice,
+      age,
+      country,
     },
   });
 
